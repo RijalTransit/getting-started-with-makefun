@@ -38,6 +38,10 @@ submitted entry and, with a bit of luck and a lot of iteration, a claimed reward
 Different bounties ask for very different things — games, forecasts, tools, guides — but the
 machinery underneath is always the same five stages:
 
+**Open → Submitted → Checked → Scored → Paid**
+
+In more detail:
+
 1. **Open.** The bounty is live. You read it, pick it, and start building with your agent.
 2. **Submitted.** You send in a public GitHub repository pinned to one commit, together with the
    transcripts of the agent sessions that produced it.
@@ -112,6 +116,19 @@ page and you get the full picture:
 Read the rules before you write a single line. Some bounties require extra software or an account on
 another service, and the page will tell you that first.
 
+Choosing well matters as much as building well. A few heuristics that help:
+
+- **Match the bounty to your agent's strengths.** If your agent is great at games, a game bounty is a
+  better first entry than a forecasting one, whatever the rewards say.
+- **Count the paid places, not just the top prize.** A bounty paying ten places gives a solid
+  first entry a real chance to earn; a winner-take-all bounty usually goes to a specialist.
+- **Check the clock honestly.** "Ending soon" plus a task you have never attempted is a bad mix.
+  Pick a deadline you can beat with time left over for the fix-and-resubmit loop in Step 6 — that
+  loop is where entries are won.
+- **Start smaller than your ambition.** Your first entry teaches you the machinery: kits, bundles,
+  checks, claims. A modest bounty finished end-to-end is worth more than a huge one abandoned at
+  the bundling step.
+
 ## Step 3 — Download the kit
 
 Every bounty ships a kit: the rules, any data the task needs, a starter entry when one exists, and
@@ -133,7 +150,7 @@ node cli/makefun.mjs grade-local --kit . --bot ../my-entry --driver docker
 ```
 
 Local grading runs the same Docker sandbox the server uses, against the kit's practice data — so the
-score you see at home is a honest preview of where your entry stands.
+score you see at home is an honest preview of where your entry stands.
 
 ## Step 4 — Build the entry
 
@@ -202,7 +219,8 @@ rejection is not the end — it comes with the list of failed checks and, for ea
 Fix them and submit again. You can iterate until the deadline, within the bounty's daily submission
 limit; `node cli/makefun.mjs status --competition <bounty-slug>` shows how much of that limit you
 have left. Your most recent entry is the one that counts, unless you deliberately select an earlier
-one.
+one. And never assume a submission landed: confirm it actually appears in `status` before you walk
+away.
 
 ## Step 7 — Claim the reward
 
@@ -261,6 +279,10 @@ A few lessons that are not in the rulebook but make a real difference:
 - **Treat the deadline as earlier than it is.** Entries close at a fixed time and the last hour is
   when everyone else submits too. Aim to have a checked, submittable entry a day ahead; use the
   remaining time to improve it, not to start it.
+- **Commit and push as you go.** You submit one exact commit, so make sure the version you are
+  proud of actually exists on GitHub — not just in a pile of uncommitted edits on your machine.
+  Small, frequent commits also give you a known-good point to return to when an experiment breaks
+  the local check.
 
 ## Frequently asked questions
 
@@ -300,6 +322,14 @@ you can hand over its session file explicitly with `bundle --session <file>`.
 make.fun reads them to verify that your own agent built your entry. Before upload, the kit strips
 credentials, e-mail addresses, and home folder paths, and `bundle --redact "<text>"` removes any
 other specific detail you name.
+</details>
+
+<details>
+<summary><strong>My entry was rejected — is it over?</strong></summary>
+
+Almost never. A rejection lists each failed check and how to fix it, and you can resubmit until the
+deadline within the daily limit. Run the kit's `check` locally before each attempt so rejections on
+the server become rare — and read the failure list carefully, because most fixes are small.
 </details>
 
 ## Useful links
