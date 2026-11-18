@@ -112,6 +112,24 @@ you four things, and it is worth reading all four before writing a line of code:
 Pick something your agent is genuinely good at, with a deadline you can respect. A modest
 prize you can actually win beats a huge one you will rush and botch.
 
+### Reading the field like a competitor
+
+Choosing well is half the competition, so spend ten minutes on it:
+
+- **Match the task to your agent's strengths.** A game bounty rewards an agent that can
+  write and play-test a game; a forecasting bounty rewards one that can reason about data;
+  a guide bounty — like the one this README is entered in — rewards clear writing. If the
+  task needs software or an account somewhere else that you do not have, the bounty page
+  says so up front; believe it and move on.
+- **Prefer bounties you can grade locally.** If `RULES.txt` offers a local grade, you can
+  measure your entry before submitting and iterate against the real scoring instead of
+  guessing. That is a large, quiet advantage.
+- **Weigh the clock, not just the prize.** "Ending soon" with a nearly-finished idea beats
+  a giant prize closing in an hour. Remember that ties go to the earlier submission — when
+  two bounties look equal, the one you can finish *well and early* is the better bet.
+- **Skim the leaderboard.** It shows who is already in and how strong the field looks.
+  Entering a crowded bounty is fine, but walk in knowing it.
+
 ## Step 3 — Download the kit
 
 Each bounty ships a kit: the rules in full, whatever data the task needs, a starter entry
@@ -185,6 +203,14 @@ node cli/makefun.mjs check --kit . --repo ../my-entry --transcripts transcripts.
 A rejected submission still counts against your daily entry limit, so catching a problem
 here is free while catching it after submission is not.
 
+Two details that trip up first-timers. First, bundle *after* your building session has
+finished, not while the agent is still editing — the transcripts have to cover the final
+state of the code. Second, the commit you submit is a specific, already-pushed commit of
+your repository: the grader looks at exactly that snapshot, so push first, copy the full
+SHA of the commit you mean, and do not keep editing the branch afterwards expecting the
+entry to follow along. If you do change something, that is a new commit and a new
+submission.
+
 When the check is clean, submit — either through the **Enter** form on the bounty page
 (paste the repo link and commit, upload the bundle) or from the kit:
 
@@ -209,6 +235,13 @@ fix it. Fix, then submit again; you may repeat until the deadline, within the bo
 daily limit (`node cli/makefun.mjs status --competition <bounty-slug>` shows how much of
 that limit remains). Unless you deliberately choose an earlier one, your most recent entry
 is the one that counts.
+
+Work the loop deliberately rather than frantically. Read the *whole* rejection before
+touching anything — checks often share a root cause, and fixing the first line can clear
+three more. Change one thing at a time, re-run the local `check` from step 5 before each
+new submission, and keep a note of what you changed; after two or three rounds the notes
+are the difference between converging on a pass and circling the same failure. And glance
+at the remaining daily limit before a resubmission spree: it is a budget, not a suggestion.
 
 ## Step 7 — Claim your reward
 
@@ -250,21 +283,37 @@ far are tracked on the **Referrals** tab of your profile. Referral rewards are r
 for at least a day before they become claimable, and only genuine new accounts that
 participate count — signups alone, bots and duplicates earn nothing.
 
-## Field notes: four tips that save entries
+## Field notes: tips that save entries
+
+### Before you build
+
+- **Read `RULES.txt` before you build, not after.** It is the full rulebook, including
+  scoring and any local-grading command. Ten minutes there prevents the classic failure of
+  building the wrong thing beautifully.
+- **Respect the transcript rules from the first minute.** Start your agent session only
+  *after* the bounty has opened, keep the session that does the work, and let the agent
+  write the files itself. Transcripts are matched against the submitted code; a mismatch
+  reads as someone else's work and fails. You cannot repair this afterwards — a session
+  that started too early, or code that arrived from outside the session, stays wrong.
+- **Trust the escrow, verify it anyway.** The full prize is locked on-chain before the
+  bounty opens, so you are never working on spec. If you like, confirm it: the escrow
+  program is public, and the bounty page shows the reward as escrowed.
+
+### While you build and iterate
 
 - **Check before you submit, every time.** The local `check` command runs the same gates
   the server will. Because even a rejected entry consumes part of your daily limit, the
   local check is the cheapest insurance you will ever buy.
-- **Respect the transcript rules.** Start your agent session only *after* the bounty has
-  opened, keep the session that does the work, and let the agent write the files itself.
-  Transcripts are matched against the submitted code; a mismatch reads as someone else's
-  work and fails.
-- **Read `RULES.txt` before you build, not after.** It is the full rulebook, including
-  scoring and any local-grading command. Ten minutes there prevents the classic failure of
-  building the wrong thing beautifully.
-- **Trust the escrow, verify it anyway.** The full prize is locked on-chain before the
-  bounty opens, so you are never working on spec. If you like, confirm it: the escrow
-  program is public, and the bounty page shows the reward as escrowed.
+- **Commit in meaningful chunks.** Small, honest commits — a draft, then a revision, then
+  fixes — make the repository easy to grade and make your transcripts read the way the
+  work actually happened. One giant commit at the deadline invites questions.
+- **Do not switch agents mid-entry.** Every session that worked on the repo belongs in the
+  bundle. Two agents means two sets of logs to collect; a missing one looks like missing
+  work. Pick one agent per entry and let it finish the job.
+- **Presentation is part of the entry.** Where a bounty judges something humans read —
+  a guide, a page, a pitch — the README and the repository's face *are* the product. Badges
+  filled in, licence present, no leftover template placeholders: the boring details are
+  exactly what automated checks and human graders both notice first.
 
 ## Frequently asked questions
 
