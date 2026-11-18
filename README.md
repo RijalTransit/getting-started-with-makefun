@@ -157,6 +157,13 @@ earlier submissions win exact ties.
 Where a bounty can be graded locally, prefer it. A local grade turns
 guessing into measuring, and measuring is how entries improve.
 
+One more filter that experienced entrants apply quietly: look at who
+else is entering. A crowded leaderboard is not a reason to walk away,
+but it tells you the standard your entry must clear. And read the
+bounty's discussion for questions other entrants already asked — the
+answers often clarify a rule that the page only summarises, and asking
+a question yourself early is cheaper than rebuilding late.
+
 ## Step 3 — Fetch the kit and read the rules properly
 
 Every bounty distributes a kit: the complete rules, any data or starter
@@ -325,6 +332,86 @@ design: the programme pays for humans who actually arrive and build.
 This guide exists because of that programme. If it helped you start,
 signing up through [my link](https://make.fun/r/4ptk7262) — code
 `4ptk7262` — is a fair thank-you.
+
+## A realistic first entry, hour by hour
+
+Abstract steps become easier once you see them against a clock. Here is
+a sensible shape for a first attempt at a two-day bounty — adjust the
+proportions, not the order:
+
+- **Hour 0–1: read and choose.** Make the account, connect the tooling,
+  read three bounty pages properly, and commit to one. Download its kit
+  and finish `RULES.txt` before writing anything.
+- **Hour 1–4: build the honest version.** Start the fresh session, copy
+  the starter in if there is one, and get a complete, ordinary entry
+  working end to end. Ordinary and complete beats brilliant and half
+  finished at every deadline.
+- **Hour 4–5: measure.** Run the local grade if the bounty offers one,
+  or re-read your work against the published scoring criteria. Fix the
+  largest scoring gap you found, not the smallest cosmetic one.
+- **Hour 5–6: package and check.** Push, note the commit, bundle, and
+  run the local check. Repair every failure it reports while repairing
+  is still free.
+- **Then submit — and stop.** Submit with most of the window still
+  open. The remaining time is now insurance: if the server rejects, you
+  have hours to fix it; if it accepts, the early receipt wins you any
+  exact tie.
+
+The pattern underneath the timetable is the real lesson: reading first,
+a complete draft early, measurement before polish, and submission well
+before the deadline. Every experienced entrant I have watched follows
+some version of it, and every horror story skips at least one stage.
+
+## Pre-submit checklist — sixty seconds that save entries
+
+Run down this list with your finger on the screen before you submit:
+
+- [ ] The repository is **public** and owned by the GitHub account
+      linked to your make.fun account.
+- [ ] The commit you are entering is **pushed** — the SHA exists on
+      GitHub, not only on your machine.
+- [ ] A licence file with an OSI-approved licence sits at the root.
+- [ ] The building session **started after the bounty opened** and is
+      the session the bundle actually collected.
+- [ ] The bundle was made **after** the final edit, from the final
+      state of the files.
+- [ ] The local `check` passed on that exact bundle and commit.
+- [ ] You still have daily entry allowance left, and time to use one
+      more submission if this one is rejected.
+
+If any box stays unticked, tick it first. Submitting anyway does not
+save time; it spends an entry.
+
+## When things go wrong: a short troubleshooting table
+
+| Symptom | Likely cause | First fix |
+|---|---|---|
+| Entry rejected for transcripts | Session began before the opening, or the wrong session was bundled | Start a fresh session after the opening and rebuild there; bundle again |
+| Code appears that no session wrote | Files were pasted in from outside the session | Let the agent re-create those files inside the session, or accept the lower authored share |
+| Check complains about a licence | No licence file, or a non-approved licence | Add an MIT `LICENSE` at the repository root |
+| Submission names a commit the server cannot find | The commit was never pushed | Push, copy the new full SHA, and submit that |
+| A guide entry's README is not the one GitHub shows | A `.github/README.md` shadows the root file | Delete `.github/README.md` so the root guide is displayed |
+| Guide screenshot is refused | Wrong format, or over 8 MB / 16,000,000 pixels | Re-capture at normal scale as PNG and commit it as `screenshot.png` |
+| Claim cannot find a wallet | No wallet is linked or the signing keypair differs | Claim with the same keypair that signed the winning entry |
+
+Most rejections are in this table, and every one of them is fixable
+inside the entry window. Panic is optional; reading the check's own fix
+text is not — it almost always names the exact repair.
+
+## A note for guide and writing bounties
+
+Some bounties, including the one this very guide is entered in, ask for
+a document rather than a program. The loop is identical — fresh
+session, draft, revision, bundle, check, submit — with two additions.
+First, the repository page itself is the product: keep the required
+badge lines intact, set the repository's About to a make.fun website
+with the topic `makefun`, and commit a real screenshot of the published
+page as `screenshot.png`, captured after the guide is live so the top
+of the image shows the repository name and the start of the guide.
+Second, write in passes on purpose. A guide written once and never
+revised reads like it, and the transcript gate expects a revision: a
+full draft commit followed by a genuine improvement commit is both
+better writing and the required shape.
 
 ## Common questions
 
